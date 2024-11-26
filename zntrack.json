@@ -1,0 +1,9 @@
+{
+    "water": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/water"
+        },
+        "file": "data/water.h5"
+    }
+}

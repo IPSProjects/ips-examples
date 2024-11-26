@@ -1,0 +1,8 @@
+stages:
+  water:
+    cmd: zntrack run ipsuite.nodes.AddDataH5MD --name water
+    deps:
+    - data/water.h5
+    metrics:
+    - nodes/water/node-meta.json:
+        cache: false

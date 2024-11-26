@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  water:
+    cmd: zntrack run ipsuite.nodes.AddDataH5MD --name water
+    deps:
+    - path: data/water.h5
+      hash: md5
+      md5: 7b1c86b6ad88c9e413809b907c103d5b
+      size: 3664392
+    outs:
+    - path: nodes/water/node-meta.json
+      hash: md5
+      md5: 2a067ed7304a80bd7d54d547f3c248a4
+      size: 64

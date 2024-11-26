@@ -1,0 +1,6 @@
+[core]
+    remote = origin
+['remote "origin"']
+    url = s3://public/dvc/ips-examples
+    allow_anonymous_login = true
+    endpointurl = https://minio.icp.uni-stuttgart.de
