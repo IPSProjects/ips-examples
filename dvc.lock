@@ -12,3 +12,23 @@ stages:
       hash: md5
       md5: 2a067ed7304a80bd7d54d547f3c248a4
       size: 64
+  BMIM_BF4_363_15K:
+    cmd: zntrack run ipsuite.nodes.AddData --name BMIM_BF4_363_15K
+    deps:
+    - path: data/BMIM_BF4_363_15K.extxyz
+      hash: md5
+      md5: 5e5c8572ec2742c248c8bd8dc0ac95a2
+      size: 950298
+    params:
+      params.yaml:
+        BMIM_BF4_363_15K:
+          lines_to_read:
+    outs:
+    - path: nodes/BMIM_BF4_363_15K/atoms.h5
+      hash: md5
+      md5: ff693af74dec1687e89847a76e5e5c8c
+      size: 489002
+    - path: nodes/BMIM_BF4_363_15K/node-meta.json
+      hash: md5
+      md5: 00b51d9ac15e2582b3db24c46628a800
+      size: 64

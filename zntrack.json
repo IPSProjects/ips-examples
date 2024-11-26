@@ -5,5 +5,12 @@
             "value": "nodes/water"
         },
         "file": "data/water.h5"
+    },
+    "BMIM_BF4_363_15K": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/BMIM_BF4_363_15K"
+        },
+        "file": "data/BMIM_BF4_363_15K.extxyz"
     }
 }
