@@ -1,17 +1,17 @@
 stages:
   BMIM_BF4_363_15K:
-    cmd: zntrack run ipsuite.nodes.AddData --name BMIM_BF4_363_15K
+    cmd: zntrack run ipsuite.data_loading.add_data_ase.AddData --name BMIM_BF4_363_15K
     deps:
     - data/BMIM_BF4_363_15K.extxyz
     metrics:
     - nodes/BMIM_BF4_363_15K/node-meta.json:
         cache: false
     outs:
-    - nodes/BMIM_BF4_363_15K/atoms.h5
+    - nodes/BMIM_BF4_363_15K/frames.h5
     params:
     - BMIM_BF4_363_15K
   water:
-    cmd: zntrack run ipsuite.nodes.AddDataH5MD --name water
+    cmd: zntrack run ipsuite.data_loading.add_data_h5md.AddDataH5MD --name water
     deps:
     - data/water.h5
     metrics:

@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   water:
-    cmd: zntrack run ipsuite.nodes.AddDataH5MD --name water
+    cmd: zntrack run ipsuite.data_loading.add_data_h5md.AddDataH5MD --name water
     deps:
     - path: data/water.h5
       hash: md5
@@ -10,10 +10,10 @@ stages:
     outs:
     - path: nodes/water/node-meta.json
       hash: md5
-      md5: 2a067ed7304a80bd7d54d547f3c248a4
+      md5: f9dfeb307fd1766cb3a702819138c04a
       size: 64
   BMIM_BF4_363_15K:
-    cmd: zntrack run ipsuite.nodes.AddData --name BMIM_BF4_363_15K
+    cmd: zntrack run ipsuite.data_loading.add_data_ase.AddData --name BMIM_BF4_363_15K
     deps:
     - path: data/BMIM_BF4_363_15K.extxyz
       hash: md5
@@ -24,11 +24,11 @@ stages:
         BMIM_BF4_363_15K:
           lines_to_read:
     outs:
-    - path: nodes/BMIM_BF4_363_15K/atoms.h5
+    - path: nodes/BMIM_BF4_363_15K/frames.h5
       hash: md5
-      md5: ff693af74dec1687e89847a76e5e5c8c
+      md5: 7e89040bb5f879421a3e17f155dd591f
       size: 489002
     - path: nodes/BMIM_BF4_363_15K/node-meta.json
       hash: md5
-      md5: 00b51d9ac15e2582b3db24c46628a800
+      md5: 8c41b90f3ed9515bc3bf927bd1c9a973
       size: 64
