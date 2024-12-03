@@ -1,0 +1,15 @@
+integrator: steep
+nsteps: 100
+nstxout: 2
+
+nstlist: 20
+cutoff-scheme: Verlet
+rlist: 0.5
+coulombtype: PME
+rcoulomb: 0.5
+vdw-type: cutoff
+vdw-modifier: force-switch
+rvdw-switch: 0.4
+rvdw: 0.5
+pbc: xyz
+DispCorr: "no"

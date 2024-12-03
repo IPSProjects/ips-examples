@@ -10,6 +10,19 @@ stages:
     - nodes/BMIM_BF4_363_15K/frames.h5
     params:
     - BMIM_BF4_363_15K
+  gromacs_Smiles2Gromacs:
+    cmd: zntrack run ipsuite.configuration_generation.gmx.Smiles2Gromacs --name gromacs_Smiles2Gromacs
+    deps:
+    - config/gromacs/gmx_md.mdp
+    metrics:
+    - nodes/gromacs/Smiles2Gromacs/node-meta.json:
+        cache: false
+    outs:
+    - nodes/gromacs/Smiles2Gromacs/gromacs
+    - nodes/gromacs/Smiles2Gromacs/structures.h5
+    params:
+    - config/gromacs/gmx_em.yaml: null
+    - gromacs_Smiles2Gromacs
   water:
     cmd: zntrack run ipsuite.data_loading.add_data_h5md.AddDataH5MD --name water
     deps:

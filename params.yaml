@@ -1,2 +1,19 @@
 BMIM_BF4_363_15K:
   lines_to_read: null
+gromacs_Smiles2Gromacs:
+  cleanup: true
+  count:
+  - 16
+  - 16
+  density: 0.9
+  fudgeLJ: 1.0
+  fudgeQQ: 1.0
+  labels:
+  - Imx
+  - BFx
+  production_indices:
+  - 1
+  smiles:
+  - CCCCN1C=C[N+](=C1)C
+  - CC(=O)[O-]
+  tolerance: 2.0

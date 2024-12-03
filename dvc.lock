@@ -32,3 +32,58 @@ stages:
       hash: md5
       md5: 8c41b90f3ed9515bc3bf927bd1c9a973
       size: 64
+  gromacs_Smiles2Gromacs:
+    cmd: zntrack run ipsuite.configuration_generation.gmx.Smiles2Gromacs --name gromacs_Smiles2Gromacs
+    deps:
+    - path: config/gromacs/gmx_md.mdp
+      hash: md5
+      md5: 417a751a8437ce44e2a2373e12de3abe
+      size: 1787
+    params:
+      params.yaml:
+        gromacs_Smiles2Gromacs:
+          cleanup: true
+          count:
+          - 16
+          - 16
+          density: 0.9
+          fudgeLJ: 1.0
+          fudgeQQ: 1.0
+          labels:
+          - Imx
+          - BFx
+          production_indices:
+          - 1
+          smiles:
+          - CCCCN1C=C[N+](=C1)C
+          - CC(=O)[O-]
+          tolerance: 2.0
+      config/gromacs/gmx_em.yaml:
+        DispCorr: no
+        coulombtype: PME
+        cutoff-scheme: Verlet
+        integrator: steep
+        nsteps: 100
+        nstlist: 20
+        nstxout: 2
+        pbc: xyz
+        rcoulomb: 0.5
+        rlist: 0.5
+        rvdw: 0.5
+        rvdw-switch: 0.4
+        vdw-modifier: force-switch
+        vdw-type: cutoff
+    outs:
+    - path: nodes/gromacs/Smiles2Gromacs/gromacs
+      hash: md5
+      md5: 915ed4325d252ce4b1443b2fd29e7898.dir
+      size: 363
+      nfiles: 1
+    - path: nodes/gromacs/Smiles2Gromacs/node-meta.json
+      hash: md5
+      md5: 8d597b84e044317d49feb3905945179c
+      size: 64
+    - path: nodes/gromacs/Smiles2Gromacs/structures.h5
+      hash: md5
+      md5: d6ccac6cea71034df3222a753fdda961
+      size: 818168

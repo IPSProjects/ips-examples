@@ -1,0 +1,37 @@
+; Run control
+integrator       = md               ; Molecular dynamics integrator
+dt               = 0.001            ; Time step in ps
+nsteps           = 50000            ; Number of steps
+gen-vel          = no               ; Generate velocities at start
+
+; Cutoff scheme
+cutoff-scheme    = Verlet           ; Cutoff scheme
+
+; Electrostatics
+coulombtype      = PME              ; Particle Mesh Ewald for electrostatics
+rcoulomb         = 0.7              ; Coulomb cutoff distance in nm
+
+; Van der Waals interactions
+vdwtype          = Cut-off          ; Van der Waals interactions
+rvdw             = 0.7              ; Van der Waals cutoff distance in nm
+DispCorr         = EnerPres         ; Dispersion correction for energy and pressure
+
+; Temperature coupling
+tcoupl           = Nose-Hoover      ; Temperature coupling scheme
+tc-grps          = System           ; Groups to couple to thermostat
+tau-t            = 0.5              ; Time constant for temperature coupling in ps
+ref-t            = 298.15           ; Reference temperature in K
+nhchainlength    = 1                ; Number of Nose-Hoover chains per group
+
+; Pressure coupling
+pcoupl           = C-rescale        ; Pressure coupling on
+pcoupltype       = isotropic        ; Isotropic pressure coupling
+tau_p            = 4.0              ; Time constant for pressure coupling in ps
+ref_p            = 1.0              ; Reference pressure in bar
+compressibility  = 4.5e-5           ; Compressibility of water in bar^-1
+
+; Output control
+nstxout          = 1000             ; Save coordinates every 1000 steps
+nstfout          = 1000             ; Save forces every 1000 steps
+nstlog           = 1000             ; Print to log file every 1000 steps
+nstenergy        = 1000             ; Save energies every 1000 steps

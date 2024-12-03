@@ -12,5 +12,33 @@
             "value": "nodes/BMIM_BF4_363_15K"
         },
         "file": "data/BMIM_BF4_363_15K.extxyz"
+    },
+    "gromacs_Smiles2Gromacs": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/gromacs/Smiles2Gromacs"
+        },
+        "mdp_files": [
+            {
+                "_type": "pathlib.Path",
+                "value": "config/gromacs/gmx_md.mdp"
+            }
+        ],
+        "config_files": [
+            {
+                "_type": "pathlib.Path",
+                "value": "config/gromacs/gmx_em.yaml"
+            }
+        ],
+        "itp_files": [],
+        "pdb_files": [],
+        "traj_file": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/structures.h5"
+        },
+        "output_dir": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/gromacs"
+        }
     }
 }
