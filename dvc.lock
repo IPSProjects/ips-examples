@@ -81,9 +81,9 @@ stages:
       nfiles: 1
     - path: nodes/gromacs/Smiles2Gromacs/node-meta.json
       hash: md5
-      md5: 8d597b84e044317d49feb3905945179c
+      md5: 05e4b5d46d92eb8d5550690b8c2a942d
       size: 64
     - path: nodes/gromacs/Smiles2Gromacs/structures.h5
       hash: md5
-      md5: d6ccac6cea71034df3222a753fdda961
-      size: 818168
+      md5: 70744b3d186070027d5b6e1617dbe453
+      size: 809358
