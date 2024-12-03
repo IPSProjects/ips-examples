@@ -23,6 +23,28 @@ stages:
     params:
     - config/gromacs/gmx_em.yaml: null
     - gromacs_Smiles2Gromacs
+  pack_MultiPackmol:
+    cmd: zntrack run ipsuite.configuration_generation.packmol.MultiPackmol --name
+      pack_MultiPackmol
+    deps:
+    - nodes/pack/Smiles2Conformers/frames.h5
+    metrics:
+    - nodes/pack/MultiPackmol/node-meta.json:
+        cache: false
+    outs:
+    - nodes/pack/MultiPackmol/frames.h5
+    params:
+    - pack_MultiPackmol
+  pack_Smiles2Conformers:
+    cmd: zntrack run ipsuite.configuration_generation.smiles_to_atoms.Smiles2Conformers
+      --name pack_Smiles2Conformers
+    metrics:
+    - nodes/pack/Smiles2Conformers/node-meta.json:
+        cache: false
+    outs:
+    - nodes/pack/Smiles2Conformers/frames.h5
+    params:
+    - pack_Smiles2Conformers
   water:
     cmd: zntrack run ipsuite.data_loading.add_data_h5md.AddDataH5MD --name water
     deps:

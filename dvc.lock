@@ -87,3 +87,51 @@ stages:
       hash: md5
       md5: 70744b3d186070027d5b6e1617dbe453
       size: 809358
+  pack_Smiles2Conformers:
+    cmd: zntrack run ipsuite.configuration_generation.smiles_to_atoms.Smiles2Conformers
+      --name pack_Smiles2Conformers
+    params:
+      params.yaml:
+        pack_Smiles2Conformers:
+          cell: 100
+          maxAttempts: 1000
+          numConfs: 10
+          seed: 42
+          smiles: CCO
+    outs:
+    - path: nodes/pack/Smiles2Conformers/frames.h5
+      hash: md5
+      md5: e537791cf5cb5b014e44075e30f42d37
+      size: 38716
+    - path: nodes/pack/Smiles2Conformers/node-meta.json
+      hash: md5
+      md5: 4156424dbafdf4da8457aef81fe76986
+      size: 64
+  pack_MultiPackmol:
+    cmd: zntrack run ipsuite.configuration_generation.packmol.MultiPackmol --name
+      pack_MultiPackmol
+    deps:
+    - path: nodes/pack/Smiles2Conformers/frames.h5
+      hash: md5
+      md5: e537791cf5cb5b014e44075e30f42d37
+      size: 38716
+    params:
+      params.yaml:
+        pack_MultiPackmol:
+          count:
+          - 16
+          data_ids:
+          density: 800
+          n_configurations: 10
+          pbc: true
+          seed: 42
+          tolerance: 2.0
+    outs:
+    - path: nodes/pack/MultiPackmol/frames.h5
+      hash: md5
+      md5: efb4a11bf30114d519c84ebbd9e600ae
+      size: 94152
+    - path: nodes/pack/MultiPackmol/node-meta.json
+      hash: md5
+      md5: 7a8c5940eb4f76e326ba4bcc18763cac
+      size: 64

@@ -17,3 +17,18 @@ gromacs_Smiles2Gromacs:
   - CCCCN1C=C[N+](=C1)C
   - CC(=O)[O-]
   tolerance: 2.0
+pack_MultiPackmol:
+  count:
+  - 16
+  data_ids: null
+  density: 800
+  n_configurations: 10
+  pbc: true
+  seed: 42
+  tolerance: 2.0
+pack_Smiles2Conformers:
+  cell: 100
+  maxAttempts: 1000
+  numConfs: 10
+  seed: 42
+  smiles: CCO

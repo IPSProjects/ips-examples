@@ -18,4 +18,8 @@ with project.group("gromacs"):
         fudgeQQ=1.0,
     )
 
+with project.group("pack"):
+    etoh = ips.Smiles2Conformers(smiles="CCO", numConfs=10)
+    box = ips.MultiPackmol(data=[etoh.frames], count=[16], density=800, n_configurations=10)
+
 project.build()
