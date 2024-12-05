@@ -23,6 +23,28 @@ stages:
     params:
     - config/gromacs/gmx_em.yaml: null
     - gromacs_Smiles2Gromacs
+  orca_OrcaSinglePoint:
+    cmd: zntrack run ipsuite.calculators.orca.OrcaSinglePoint --name orca_OrcaSinglePoint
+    deps:
+    - nodes/orca/Smiles2Conformers/frames.h5
+    metrics:
+    - nodes/orca/OrcaSinglePoint/node-meta.json:
+        cache: false
+    outs:
+    - nodes/orca/OrcaSinglePoint/orca
+    - nodes/orca/OrcaSinglePoint/structures.h5
+    params:
+    - orca_OrcaSinglePoint
+  orca_Smiles2Conformers:
+    cmd: zntrack run ipsuite.configuration_generation.smiles_to_atoms.Smiles2Conformers
+      --name orca_Smiles2Conformers
+    metrics:
+    - nodes/orca/Smiles2Conformers/node-meta.json:
+        cache: false
+    outs:
+    - nodes/orca/Smiles2Conformers/frames.h5
+    params:
+    - orca_Smiles2Conformers
   pack_MultiPackmol:
     cmd: zntrack run ipsuite.configuration_generation.packmol.MultiPackmol --name
       pack_MultiPackmol

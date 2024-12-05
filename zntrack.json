@@ -71,5 +71,42 @@
                 }
             }
         ]
+    },
+    "orca_Smiles2Conformers": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orca/Smiles2Conformers"
+        }
+    },
+    "orca_OrcaSinglePoint": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orca/OrcaSinglePoint"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "ipsuite.configuration_generation.smiles_to_atoms",
+                        "name": "orca_Smiles2Conformers",
+                        "cls": "Smiles2Conformers",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "orca_directory": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/orca"
+        },
+        "output_file": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/structures.h5"
+        }
     }
 }

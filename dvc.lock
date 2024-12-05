@@ -10,7 +10,7 @@ stages:
     outs:
     - path: nodes/water/node-meta.json
       hash: md5
-      md5: f9dfeb307fd1766cb3a702819138c04a
+      md5: 65e74c0d3d29e895c92aaef1b4b054cb
       size: 64
   BMIM_BF4_363_15K:
     cmd: zntrack run ipsuite.data_loading.add_data_ase.AddData --name BMIM_BF4_363_15K
@@ -26,11 +26,11 @@ stages:
     outs:
     - path: nodes/BMIM_BF4_363_15K/frames.h5
       hash: md5
-      md5: 7e89040bb5f879421a3e17f155dd591f
-      size: 489002
+      md5: b85348eed140dcd85b9cb3cb4a5634e5
+      size: 480472
     - path: nodes/BMIM_BF4_363_15K/node-meta.json
       hash: md5
-      md5: 8c41b90f3ed9515bc3bf927bd1c9a973
+      md5: 310da63e9fb8f393f8c25d1fff73d6a4
       size: 64
   gromacs_Smiles2Gromacs:
     cmd: zntrack run ipsuite.configuration_generation.gmx.Smiles2Gromacs --name gromacs_Smiles2Gromacs
@@ -52,6 +52,7 @@ stages:
           labels:
           - Imx
           - BFx
+          maxwarn: 0
           production_indices:
           - 1
           smiles:
@@ -81,12 +82,12 @@ stages:
       nfiles: 1
     - path: nodes/gromacs/Smiles2Gromacs/node-meta.json
       hash: md5
-      md5: 05e4b5d46d92eb8d5550690b8c2a942d
+      md5: 5a985b976b116e0dac62a64a106b49b5
       size: 64
     - path: nodes/gromacs/Smiles2Gromacs/structures.h5
       hash: md5
-      md5: 70744b3d186070027d5b6e1617dbe453
-      size: 809358
+      md5: 4200906e060b8d102304f8c5114131ca
+      size: 809281
   pack_Smiles2Conformers:
     cmd: zntrack run ipsuite.configuration_generation.smiles_to_atoms.Smiles2Conformers
       --name pack_Smiles2Conformers
@@ -135,3 +136,50 @@ stages:
       hash: md5
       md5: 7a8c5940eb4f76e326ba4bcc18763cac
       size: 64
+  orca_Smiles2Conformers:
+    cmd: zntrack run ipsuite.configuration_generation.smiles_to_atoms.Smiles2Conformers
+      --name orca_Smiles2Conformers
+    params:
+      params.yaml:
+        orca_Smiles2Conformers:
+          cell: 100
+          maxAttempts: 1000
+          numConfs: 10
+          seed: 42
+          smiles: C1=CC2=C(C=C1O)C(=CN2)CCN
+    outs:
+    - path: nodes/orca/Smiles2Conformers/frames.h5
+      hash: md5
+      md5: 071f9afa33e16fb708e6215cae8b0ef8
+      size: 42805
+    - path: nodes/orca/Smiles2Conformers/node-meta.json
+      hash: md5
+      md5: 579a6e05ae3b2c027e28f83f08e8f734
+      size: 64
+  orca_OrcaSinglePoint:
+    cmd: zntrack run ipsuite.calculators.orca.OrcaSinglePoint --name orca_OrcaSinglePoint
+    deps:
+    - path: nodes/orca/Smiles2Conformers/frames.h5
+      hash: md5
+      md5: 071f9afa33e16fb708e6215cae8b0ef8
+      size: 42805
+    params:
+      params.yaml:
+        orca_OrcaSinglePoint:
+          orca_shell:
+          orcablocks: '%pal nprocs 8 end'
+          orcasimpleinput: PBE def2-TZVP TightSCF EnGrad
+    outs:
+    - path: nodes/orca/OrcaSinglePoint/node-meta.json
+      hash: md5
+      md5: 36579ec654a014fbc7af56f81acb73ed
+      size: 64
+    - path: nodes/orca/OrcaSinglePoint/orca
+      hash: md5
+      md5: 5933292e0d865619ad75b7feec2eede6.dir
+      size: 7417245
+      nfiles: 8
+    - path: nodes/orca/OrcaSinglePoint/structures.h5
+      hash: md5
+      md5: 47df60ca34dc28de383fad04f3611610
+      size: 107298

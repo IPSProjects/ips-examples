@@ -20,6 +20,16 @@ with project.group("gromacs"):
 
 with project.group("pack"):
     etoh = ips.Smiles2Conformers(smiles="CCO", numConfs=10)
-    box = ips.MultiPackmol(data=[etoh.frames], count=[16], density=800, n_configurations=10)
+    box = ips.MultiPackmol(
+        data=[etoh.frames], count=[16], density=800, n_configurations=10
+    )
+
+with project.group("orca"):
+    etoh = ips.Smiles2Conformers(smiles="C1=CC2=C(C=C1O)C(=CN2)CCN", numConfs=10)
+    orca = ips.OrcaSinglePoint(
+        data=etoh.frames,
+        orcasimpleinput="PBE def2-TZVP TightSCF EnGrad",
+        orcablocks="%pal nprocs 8 end",
+    )
 
 project.build()

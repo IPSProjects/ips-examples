@@ -11,12 +11,23 @@ gromacs_Smiles2Gromacs:
   labels:
   - Imx
   - BFx
+  maxwarn: 0
   production_indices:
   - 1
   smiles:
   - CCCCN1C=C[N+](=C1)C
   - CC(=O)[O-]
   tolerance: 2.0
+orca_OrcaSinglePoint:
+  orca_shell: null
+  orcablocks: '%pal nprocs 8 end'
+  orcasimpleinput: PBE def2-TZVP TightSCF EnGrad
+orca_Smiles2Conformers:
+  cell: 100
+  maxAttempts: 1000
+  numConfs: 10
+  seed: 42
+  smiles: C1=CC2=C(C=C1O)C(=CN2)CCN
 pack_MultiPackmol:
   count:
   - 16
